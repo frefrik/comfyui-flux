@@ -10,6 +10,7 @@ RUN apt-get update \
     libgl1 \
     libglib2.0-0 \
     fonts-dejavu-core \
+    sudo \
     && rm -rf /var/lib/apt/lists/*
 
 # Install torch, torchvision, torchaudio and xformers
@@ -37,6 +38,9 @@ RUN useradd -m -d /app runner \
     && mkdir -p /scripts \
     && chown runner:runner /app /scripts
 COPY --chown=runner:runner scripts/. /scripts/
+
+# Add runner to sudoers
+RUN echo "runner ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/runner
 
 USER runner:runner
 VOLUME /app

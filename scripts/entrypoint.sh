@@ -2,6 +2,12 @@
 
 set -e
 
+# Ensure correct permissions for /app directory
+if [ ! -w "/app" ]; then
+    echo "Warning: Cannot write to /app. Attempting to fix permissions..."
+    sudo chown -R $(id -u):$(id -g) /app
+fi
+
 # Install ComfyUI
 cd /app
 if [ ! -f "/app/.download-complete" ] ; then
