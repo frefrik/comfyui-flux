@@ -10,7 +10,7 @@ fi
 
 # Install ComfyUI
 cd /app
-if [ ! -f "/app/.download-complete" ] ; then
+if [ ! -f "/app/.download-complete" ]; then
     chmod +x /scripts/install_comfyui.sh
     bash /scripts/install_comfyui.sh
 else
@@ -21,7 +21,7 @@ else
     cd /app/ComfyUI/custom_nodes/ComfyUI-Manager
     git pull
     cd /app
-fi ;
+fi
 
 # Download models listed in download.txt
 echo "########################################"
