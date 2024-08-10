@@ -2,6 +2,7 @@ services:
   comfyui:
     container_name: comfyui
     image: frefrik/comfyui-flux:latest
+    restart: unless-stopped
     ports:
       - "8188:8188"
     volumes:
