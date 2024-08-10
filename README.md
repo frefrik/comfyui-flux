@@ -23,14 +23,42 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
    HF_TOKEN=your_huggingface_token
    ```
 
-2. Run the container using Docker Compose:
+2. Download the `docker-compose.yml` file:
+   ```
+   wget https://raw.githubusercontent.com/frefrik/comfyui-flux/main/docker-compose.yml
+   ```
+   
+   Alternatively, you can create a `docker-compose.yml` file and copy/paste the following contents:
+   ```yaml
+   services:
+     comfyui:
+       container_name: comfyui
+       image: frefrik/comfyui-flux:latest
+       restart: unless-stopped
+       ports:
+         - "8188:8188"
+       volumes:
+         - "./data:/app"
+       environment:
+         - CLI_ARGS=
+         - HF_TOKEN=${HF_TOKEN}
+       deploy:
+         resources:
+           reservations:
+             devices:
+               - driver: nvidia
+                 device_ids: ['0']
+                 capabilities: [gpu]
+   ```
+
+3. Run the container using Docker Compose:
    ```
    docker-compose up -d
    ```
 
    Note: The first time you run the container, it will download all the included models before starting up. This process may take some time depending on your internet connection.
 
-3. Access ComfyUI in your browser at `http://localhost:8188`
+4. Access ComfyUI in your browser at `http://localhost:8188`
 
 ## Configuration
 
