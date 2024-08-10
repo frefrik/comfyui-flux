@@ -21,10 +21,19 @@ fi ;
 echo "########################################"
 echo "[INFO] Downloading models..."
 echo "########################################"
-aria2c --input-file=/scripts/models.txt \
-    --allow-overwrite=false --auto-file-renaming=false --continue=true \
-    --max-connection-per-server=5 --conditional-get=true \
-    --header="Authorization: Bearer ${HF_TOKEN}"
+
+if [ -z "${HF_TOKEN}" ]; then
+    echo "[INFO] HF_TOKEN not provided. Skipping FLUX.1[dev] models..."
+    sed '/# FLUX.1\[dev\]/,/^$/d' /scripts/models.txt > /scripts/models_filtered.txt
+    aria2c --input-file=/scripts/models_filtered.txt \
+        --allow-overwrite=false --auto-file-renaming=false --continue=true \
+        --max-connection-per-server=5 --conditional-get=true
+else
+    aria2c --input-file=/scripts/models.txt \
+        --allow-overwrite=false --auto-file-renaming=false --continue=true \
+        --max-connection-per-server=5 --conditional-get=true \
+        --header="Authorization: Bearer ${HF_TOKEN}"
+fi
 
 echo "########################################"
 echo "[INFO] Starting ComfyUI..."
