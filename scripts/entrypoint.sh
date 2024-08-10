@@ -7,6 +7,14 @@ cd /app
 if [ ! -f "/app/.download-complete" ] ; then
     chmod +x /scripts/install_comfyui.sh
     bash /scripts/install_comfyui.sh
+else
+    echo "Updating ComfyUI..."
+    cd /app/ComfyUI
+    git pull
+    echo "Updating ComfyUI-Manager..."
+    cd /app/ComfyUI/custom_nodes/ComfyUI-Manager
+    git pull
+    cd /app
 fi ;
 
 # Download models listed in download.txt
@@ -15,7 +23,8 @@ echo "[INFO] Downloading models..."
 echo "########################################"
 aria2c --input-file=/scripts/models.txt \
     --allow-overwrite=false --auto-file-renaming=false --continue=true \
-    --max-connection-per-server=5 --conditional-get=true
+    --max-connection-per-server=5 --conditional-get=true \
+    --header="Authorization: Bearer ${HF_TOKEN}"
 
 echo "########################################"
 echo "[INFO] Starting ComfyUI..."
