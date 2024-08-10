@@ -1,4 +1,20 @@
 # FLUX.1[schnell]
+https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors
+  dir=ComfyUI/models/unet
+  out=flux1-schnell.safetensors
+https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors
+  dir=ComfyUI/models/checkpoints
+  out=flux1-schnell-fp8.safetensors
+
+# FLUX.1[dev]
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors
+  dir=ComfyUI/models/unet
+  out=flux1-dev.safetensors
+https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors
+  dir=ComfyUI/models/checkpoints
+  out=flux1-dev-fp8.safetensors
+
+# Flux Text Encoders
 https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
   dir=ComfyUI/models/clip
   out=clip_l.safetensors
@@ -8,9 +24,13 @@ https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16
 https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors
   dir=ComfyUI/models/clip
   out=t5xxl_fp8_e4m3fn.safetensors
-https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.sft
+
+# VAE
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors
   dir=ComfyUI/models/vae
-  out=ae.sft
-https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.sft
-  dir=ComfyUI/models/unet
-  out=flux1-schnell.sft
+  out=ae.safetensors
+
+# Loras
+https://huggingface.co/comfyanonymous/flux_RealismLora_converted_comfyui/resolve/main/flux_realism_lora.safetensors
+  dir=ComfyUI/models/loras
+  out=flux_realism_lora.safetensors
