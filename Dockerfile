@@ -35,9 +35,10 @@ RUN pip install --no-cache-dir --break-system-packages \
 
 # Create a low-privilege user
 RUN useradd -m -d /app runner \
-    && mkdir -p /scripts \
-    && chown runner:runner /app /scripts
+    && mkdir -p /scripts /workflows \
+    && chown runner:runner /app /scripts /workflows
 COPY --chown=runner:runner scripts/. /scripts/
+COPY --chown=runner:runner workflows/. /workflows/
 
 # Add runner to sudoers
 RUN echo "runner ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/runner
