@@ -60,6 +60,14 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
 
 4. Access ComfyUI in your browser at `http://localhost:8188`
 
+## Examples
+
+Drag the images below into ComfyUI to load the corresponding workflows.
+
+| FLUX.1[schnell] | FLUX.1[dev] |
+|-----------------|-------------|
+| ![Flux Schnell](./images/flux-schnell.png) | ![Flux Dev](./images/flux-dev.png) |
+
 ## Configuration
 
 - Models are automatically downloaded during container startup. You can modify the `scripts/models.txt` file to add or remove models.
