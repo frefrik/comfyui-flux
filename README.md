@@ -66,7 +66,7 @@ Drag the images below into ComfyUI to load the corresponding workflows.
 
 | FLUX.1[schnell] | FLUX.1[dev] |
 |-----------------|-------------|
-| <div align="center">![Flux Schnell](./images/flux-schnell.png)<br><a href="https://raw.githubusercontent.com/frefrik/comfyui-flux/refs/heads/main/images/flux-schnell.png" download>Download</a></div> | <div align="center">![Flux Dev](./images/flux-dev.png)<br><a href="https://raw.githubusercontent.com/frefrik/comfyui-flux/refs/heads/main/images/flux-dev.png" download>Download</a></div> |
+| <div align="center">![Flux Schnell](./images/flux-schnell.png)<br>[Download](https://raw.githubusercontent.com/frefrik/comfyui-flux/refs/heads/main/images/flux-schnell.png)</div> | <div align="center">![Flux Dev](./images/flux-dev.png)<br>[Download](https://raw.githubusercontent.com/frefrik/comfyui-flux/refs/heads/main/images/flux-dev.png)</div> |
 
 ## Configuration
 
