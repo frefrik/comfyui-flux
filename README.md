@@ -14,7 +14,7 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
 
 - Docker and Docker Compose
 - NVIDIA GPU with CUDA support (for GPU acceleration)
-- Huggingface account and token (for accessing FLUX.1[dev] models)
+- (Optional) Huggingface account and token (for downloading FLUX.1[dev] models)
 
 ## Quick Start
 
@@ -60,7 +60,24 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
 
 4. Access ComfyUI in your browser at `http://localhost:8188`
 
-## Examples
+## Model Files
+
+Overview of the model files that will be automatically downloaded when using this container. Some model files require an `HF_TOKEN` for download.
+
+| Type | Model File Name | Size | Notes |
+|-------------|-------------------------------|---------|-------------------------------------------------|
+| Checkpoint | flux1-dev-fp8.safetensors | 17 GiB | downloaded if `HF_TOKEN` is provided |
+| Checkpoint | flux1-schnell-fp8.safetensors | 17 GiB | |
+| CLIP | clip_l.safetensors | 235 MiB | |
+| CLIP | t5xxl_fp16.safetensors | 9.2 GiB | |
+| CLIP | t5xxl_fp8_e4m3fn.safetensors | 4.6 GiB | |
+| LoRA | flux_realism_lora.safetensors | 22 MiB | |
+| UNet | flux1-dev.safetensors | 23 GiB | downloaded if `HF_TOKEN` is provided |
+| UNet | flux1-schnell.safetensors | 23 GiB | |
+| VAE | ae.safetensors | 320 MiB | |
+---
+
+## Workflows
 
 Drag the images below into ComfyUI to load the corresponding workflows.
 
