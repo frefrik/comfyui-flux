@@ -30,7 +30,7 @@ if [ "$LOW_VRAM" == "true" ]; then
     MODEL_LIST_FILE="/scripts/models_fp8.txt"
 else
     echo "[INFO] LOW_VRAM is not set or false. Downloading non-FP8 models..."
-    MODEL_LIST_FILE="/scripts/models_non_fp8.txt"
+    MODEL_LIST_FILE="/scripts/models.txt"
 fi
 
 # Download models
