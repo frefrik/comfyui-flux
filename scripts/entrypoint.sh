@@ -40,7 +40,7 @@ echo "########################################"
 
 if [ -z "${HF_TOKEN}" ]; then
     echo "[INFO] HF_TOKEN not provided. Skipping models that require authentication..."
-    sed '/# Requires HF_TOKEN/,+2d' $MODEL_LIST_FILE > /scripts/models_filtered.txt
+    sed '/# Requires HF_TOKEN/,/^$/d' $MODEL_LIST_FILE > /scripts/models_filtered.txt
     DOWNLOAD_LIST_FILE="/scripts/models_filtered.txt"
 else
     DOWNLOAD_LIST_FILE="$MODEL_LIST_FILE"
