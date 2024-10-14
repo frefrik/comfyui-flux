@@ -25,7 +25,7 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
    LOW_VRAM=false  # Set to true to enable low VRAM mode
 
 2. Download the `docker-compose.yml` file:
-   ```
+   ```bash
    wget https://raw.githubusercontent.com/frefrik/comfyui-flux/main/docker-compose.yml
    ```
    
@@ -54,7 +54,7 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
    ```
 
 3. Run the container using Docker Compose:
-   ```
+   ```bash
    docker-compose up -d
    ```
 
@@ -99,13 +99,13 @@ Overview of the model files that will be automatically downloaded when using thi
 
 Download the images below and drag them into ComfyUI to load the corresponding workflows.
 
-### Official models
+### Official versions
 
 | FLUX.1[schnell] | FLUX.1[dev] |
 |-----------------|-------------|
 | <div align="center">![Flux Schnell](./images/flux-schnell.png)<br>[Download](https://raw.githubusercontent.com/frefrik/comfyui-flux/refs/heads/main/images/flux-schnell.png)</div> | <div align="center">![Flux Dev](./images/flux-dev.png)<br>[Download](https://raw.githubusercontent.com/frefrik/comfyui-flux/refs/heads/main/images/flux-dev.png)</div> |
- 
-### FP8 models
+
+### FP8 versions (LOW_VRAM)
 
 | FLUX.1[schnell] FP8 | FLUX.1[dev] FP8 |
 |---------------------|-----------------|
@@ -115,7 +115,7 @@ Download the images below and drag them into ComfyUI to load the corresponding w
 
 The ComfyUI and ComfyUI-Manager are automatically updated when the container starts. To update the base image and other dependencies, pull the latest version of the Docker image using:
 
-```
+```bash
 docker-compose pull
 ```
 
