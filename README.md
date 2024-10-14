@@ -43,7 +43,7 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
        environment:
          - CLI_ARGS=
          - HF_TOKEN=${HF_TOKEN}
-         - LOW_VRAM=${LOW_VRAM:=false}
+         - LOW_VRAM=${LOW_VRAM:-false}
        deploy:
          resources:
            reservations:
