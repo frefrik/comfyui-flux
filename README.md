@@ -20,16 +20,20 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
 ## Quick Start
 
 1. (Optional) Create a `.env` file in the project root and add your Huggingface token:
+
    ```bash
    HF_TOKEN=your_huggingface_token
    LOW_VRAM=false  # Set to true to enable low VRAM mode
+   ```
 
 2. Download the `docker-compose.yml` file:
+
    ```bash
    wget https://raw.githubusercontent.com/frefrik/comfyui-flux/main/docker-compose.yml
    ```
-   
+
    Alternatively, you can create a `docker-compose.yml` file and copy/paste the following contents:
+
    ```yaml
    services:
      comfyui:
@@ -54,11 +58,12 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
    ```
 
 3. Run the container using Docker Compose:
+
    ```bash
    docker-compose up -d
    ```
 
-   Note: The first time you run the container, it will download all the included models before starting up. This process may take some time depending on your internet connection.
+   **Note:** The first time you run the container, it will download all the included models before starting up. This process may take some time depending on your internet connection.
 
 4. Access ComfyUI in your browser at `http://localhost:8188`
 
@@ -76,7 +81,7 @@ LOW_VRAM=true
 
 Overview of the model files that will be automatically downloaded when using this container. Some model files require an `HF_TOKEN` for download.
 
-### When `LOW_VRAM=false` (default):
+### When `LOW_VRAM=false` (default)
 
 | Type | Model File Name | Size | Notes |
 |-------------|-------------------------------|---------|-------------------------------------------------|
@@ -88,7 +93,7 @@ Overview of the model files that will be automatically downloaded when using thi
 | LoRA | flux_realism_lora.safetensors | 22 MiB | |
 | VAE | ae.safetensors | 320 MiB | |
 
-### When `LOW_VRAM=true`:
+### When `LOW_VRAM=true`
 
 | Type | Model File Name | Size | Notes |
 |-------------|-------------------------------|---------|-------------------------------------------------|
