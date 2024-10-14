@@ -13,13 +13,16 @@ RUN apt-get update \
     sudo \
     && rm -rf /var/lib/apt/lists/*
 
+# Define build argument for CUDA version with default value
+ARG CUDA_VERSION=cu121
+
 # Install torch, torchvision, torchaudio and xformers
 RUN pip install --no-cache-dir --break-system-packages \
     torch \
     torchvision \
     torchaudio \
     xformers \
-    --index-url https://download.pytorch.org/whl/cu121
+    --index-url https://download.pytorch.org/whl/${CUDA_VERSION}
 
 # Install onnxruntime-gpu
 RUN pip uninstall --break-system-packages --yes \
