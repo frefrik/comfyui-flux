@@ -8,9 +8,10 @@ if [ ! -w "/app" ]; then
     sudo chown -R $(id -u):$(id -g) /app
 fi
 
-# Install ComfyUI
+# Install or update ComfyUI
 cd /app
-if [ ! -f "/app/.download-complete" ]; then
+if [ ! -d "/app/ComfyUI" ]; then
+    echo "ComfyUI not found. Installing..."
     chmod +x /scripts/install_comfyui.sh
     bash /scripts/install_comfyui.sh
 else
@@ -23,23 +24,32 @@ else
     cd /app
 fi
 
-# Download models listed in download.txt
+# Determine model list file based on LOW_VRAM
+if [ "$LOW_VRAM" == "true" ]; then
+    echo "[INFO] LOW_VRAM is set to true. Downloading FP8 models..."
+    MODEL_LIST_FILE="/scripts/models_fp8.txt"
+else
+    echo "[INFO] LOW_VRAM is not set or false. Downloading non-FP8 models..."
+    MODEL_LIST_FILE="/scripts/models.txt"
+fi
+
+# Download models
 echo "########################################"
 echo "[INFO] Downloading models..."
 echo "########################################"
 
 if [ -z "${HF_TOKEN}" ]; then
-    echo "[INFO] HF_TOKEN not provided. Skipping FLUX.1[dev] models..."
-    sed '/# FLUX.1\[dev\]/,/^$/d' /scripts/models.txt > /scripts/models_filtered.txt
-    aria2c --input-file=/scripts/models_filtered.txt \
-        --allow-overwrite=false --auto-file-renaming=false --continue=true \
-        --max-connection-per-server=5 --conditional-get=true
+    echo "[INFO] HF_TOKEN not provided. Skipping models that require authentication..."
+    sed '/# Requires HF_TOKEN/,/^$/d' $MODEL_LIST_FILE > /scripts/models_filtered.txt
+    DOWNLOAD_LIST_FILE="/scripts/models_filtered.txt"
 else
-    aria2c --input-file=/scripts/models.txt \
-        --allow-overwrite=false --auto-file-renaming=false --continue=true \
-        --max-connection-per-server=5 --conditional-get=true \
-        --header="Authorization: Bearer ${HF_TOKEN}"
+    DOWNLOAD_LIST_FILE="$MODEL_LIST_FILE"
 fi
+
+aria2c --input-file="$DOWNLOAD_LIST_FILE" \
+    --allow-overwrite=false --auto-file-renaming=false --continue=true \
+    --max-connection-per-server=5 --conditional-get=true \
+    ${HF_TOKEN:+--header="Authorization: Bearer ${HF_TOKEN}"}
 
 echo "########################################"
 echo "[INFO] Starting ComfyUI..."

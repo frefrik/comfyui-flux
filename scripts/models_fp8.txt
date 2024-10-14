@@ -1,0 +1,9 @@
+# FLUX.1[schnell] FP8
+https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors
+  dir=ComfyUI/models/checkpoints
+  out=flux1-schnell-fp8.safetensors
+
+# FLUX.1[dev] FP8
+https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors
+  dir=ComfyUI/models/checkpoints
+  out=flux1-dev-fp8.safetensors

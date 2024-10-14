@@ -1,18 +1,13 @@
-# FLUX.1[schnell]
+# FLUX.1[schnell] UNet
 https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors
   dir=ComfyUI/models/unet
   out=flux1-schnell.safetensors
-https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors
-  dir=ComfyUI/models/checkpoints
-  out=flux1-schnell-fp8.safetensors
 
-# FLUX.1[dev]
+# FLUX.1[dev] UNet (Requires HF_TOKEN)
+# Requires HF_TOKEN
 https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors
   dir=ComfyUI/models/unet
   out=flux1-dev.safetensors
-https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors
-  dir=ComfyUI/models/checkpoints
-  out=flux1-dev-fp8.safetensors
 
 # Flux Text Encoders
 https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
@@ -21,9 +16,6 @@ https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.saf
 https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors
   dir=ComfyUI/models/clip
   out=t5xxl_fp16.safetensors
-https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors
-  dir=ComfyUI/models/clip
-  out=t5xxl_fp8_e4m3fn.safetensors
 
 # VAE
 https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors
