@@ -9,7 +9,7 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
 - **Low VRAM Mode**: Download and use FP8 models for reduced VRAM usage
 - Pre-configured with FLUX models and VAEs
 - Easy model management and updates
-- GPU support with CUDA 12.1
+- GPU support with CUDA 12.1 or 12.4
 
 ## Prerequisites
 
@@ -55,6 +55,12 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
                - driver: nvidia
                  device_ids: ['0']
                  capabilities: [gpu]
+   ```
+
+   **Note:** The default Docker image uses CUDA 12.1 (`cu121`). If you require CUDA 12.4, you can specify the `cu124` tag in the image name. For example:
+
+   ```yaml
+   image: frefrik/comfyui-flux:cu124
    ```
 
 3. Run the container using Docker Compose:
