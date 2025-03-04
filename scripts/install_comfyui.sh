@@ -18,6 +18,14 @@ git clone --recurse-submodules \
     https://github.com/ltdrdata/ComfyUI-Manager.git \
     || (cd /app/ComfyUI/custom_nodes/ComfyUI-Manager && git pull)
 
+# Install dependencies for ComfyUI and Manager
+for req_file in "/app/ComfyUI/requirements.txt" "/app/ComfyUI/custom_nodes/ComfyUI-Manager/requirements.txt"; do
+    if [ -f "$req_file" ]; then
+        echo "[INFO] Installing requirements from $req_file"
+        pip install --no-cache-dir -r "$req_file" --retries 3 || echo "Warning: Some dependencies from $req_file may have failed to install"
+    fi
+done
+
 # Copy workflows
 WORKFLOWS_DIR="/app/ComfyUI/user/default/workflows"
 mkdir -p "$WORKFLOWS_DIR"

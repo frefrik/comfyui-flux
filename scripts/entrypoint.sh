@@ -18,9 +18,11 @@ else
     echo "Updating ComfyUI..."
     cd /app/ComfyUI
     git pull
+    pip install -r requirements.txt
     echo "Updating ComfyUI-Manager..."
     cd /app/ComfyUI/custom_nodes/ComfyUI-Manager
     git pull
+    pip install -r requirements.txt
     cd /app
 fi
 

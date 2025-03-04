@@ -13,6 +13,9 @@ RUN apt-get update \
     sudo \
     && rm -rf /var/lib/apt/lists/*
 
+# Upgrade pip
+RUN pip install --no-cache-dir --break-system-packages --upgrade pip
+
 # Define build argument for CUDA version with default value
 ARG CUDA_VERSION=cu121
 
