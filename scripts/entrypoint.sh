@@ -17,11 +17,13 @@ if [ ! -d "/app/ComfyUI" ]; then
 else
     echo "Updating ComfyUI..."
     cd /app/ComfyUI
-    git pull
+    git fetch origin master
+    git reset --hard origin/master
     pip install -r requirements.txt
     echo "Updating ComfyUI-Manager..."
     cd /app/ComfyUI/custom_nodes/ComfyUI-Manager
-    git pull
+    git fetch origin main
+    git reset --hard origin/main
     pip install -r requirements.txt
     cd /app
 fi
