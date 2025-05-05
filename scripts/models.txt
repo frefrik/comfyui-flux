@@ -1,4 +1,5 @@
 # FLUX.1[schnell] UNet
+# Requires HF_TOKEN
 https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors
   dir=ComfyUI/models/unet
   out=flux1-schnell.safetensors
@@ -21,6 +22,7 @@ https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_
   out=t5xxl_fp8_e4m3fn.safetensors
 
 # VAE
+# Requires HF_TOKEN
 https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors
   dir=ComfyUI/models/vae
   out=ae.safetensors
