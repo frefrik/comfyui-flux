@@ -16,6 +16,9 @@ https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.saf
 https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors
   dir=ComfyUI/models/clip
   out=t5xxl_fp16.safetensors
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors
+  dir=ComfyUI/models/clip
+  out=t5xxl_fp8_e4m3fn.safetensors
 
 # VAE
 https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors
