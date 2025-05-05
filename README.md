@@ -15,15 +15,16 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
 
 - Docker and Docker Compose
 - NVIDIA GPU with CUDA support (for GPU acceleration)
-- (Optional) Huggingface account and token (for downloading FLUX.1[dev] official model)
+- (Optional) Huggingface account and token (for downloading official FLUX.1[dev] and FLUX.1[schnell] models)
 
 ## Quick Start
 
 1. (Optional) Create a `.env` file in the project root and add your Huggingface token:
 
    ```bash
+   # For downloading FLUX.1[dev] and FLUX.1[schnell] model files.
+   # Get your token from https://huggingface.co/settings/tokens
    HF_TOKEN=your_huggingface_token
-   LOW_VRAM=false  # Set to true to enable low VRAM mode
    ```
 
 2. Download the `docker-compose.yml` file:
@@ -73,6 +74,13 @@ ComfyUI Flux is a Docker-based setup for running [ComfyUI](https://github.com/co
 
 4. Access ComfyUI in your browser at `http://localhost:8188`
 
+## Environment Variables
+
+- `HF_TOKEN` - Your Hugging Face access token. **Required** to download the official `flux1-dev`, `flux1-schnell` models.
+- `LOW_VRAM` - Set to `true` to download and configure ComfyUI for FP8 models, reducing VRAM usage. See [Low VRAM Mode](#low-vram-mode) section.
+- `MODELS_DOWNLOAD` - Comma-separated list specifying which FLUX base models to download (`schnell`, `dev`). If not set, both models will be downloaded.
+- `CLI_ARGS` - Additional command-line arguments to pass directly to the ComfyUI.
+
 ## Low VRAM Mode
 
 By setting the `LOW_VRAM` environment variable to `true`, the container will download and use the FP8 models, which are optimized for lower VRAM usage. The FP8 versions have CLIP and VAE merged, so only the checkpoint files are needed.
@@ -85,19 +93,22 @@ LOW_VRAM=true
 
 ## Model Files
 
-Overview of the model files that will be automatically downloaded when using this container. Some model files require an `HF_TOKEN` for download.
+Overview of the model files that will be downloaded when using this container.  
+Both official FLUX.1[dev] and FLUX.1[schnell] model files now require a `HF_TOKEN` for download.
 
 ### When `LOW_VRAM=false` (default)
 
+The following model files will be downloaded by default, unless specified otherwise in `MODELS_DOWNLOAD`:
+
 | Type | Model File Name | Size | Notes |
 |-------------|-------------------------------|---------|-------------------------------------------------|
-| UNet | flux1-schnell.safetensors | 23 GiB | |
+| UNet | flux1-schnell.safetensors | 23 GiB | requires `HF_TOKEN` for download |
 | UNet | flux1-dev.safetensors | 23 GiB | requires `HF_TOKEN` for download |
 | CLIP | clip_l.safetensors | 235 MiB | |
 | CLIP | t5xxl_fp16.safetensors | 9.2 GiB | |
 | CLIP | t5xxl_fp8_e4m3fn.safetensors | 4.6 GiB | |
 | LoRA | flux_realism_lora.safetensors | 22 MiB | |
-| VAE | ae.safetensors | 320 MiB | |
+| VAE | ae.safetensors | 320 MiB | requires `HF_TOKEN` for download |
 
 ### When `LOW_VRAM=true`
 
@@ -133,5 +144,10 @@ docker-compose pull
 ## Additional Notes
 
 - **Switching Between Modes**: If you change the `LOW_VRAM` setting after the initial run, the container will automatically download the required models for the new setting upon restart.
+- **Model Selection**: Use the optional `MODELS_DOWNLOAD` environment variable to specify which FLUX models to download:
+  - `MODELS_DOWNLOAD="schnell"`: Download only FLUX.1[schnell] model
+  - `MODELS_DOWNLOAD="dev"`: Download only FLUX.1[dev] model
+  - `MODELS_DOWNLOAD="schnell,dev"` or not set: Download both models (default)
+  - When `LOW_VRAM=false`, necessary dependencies (VAE, text encoders, LoRA) are always included
 - **Model Downloading**: The scripts are designed to skip downloading models that already exist, so you won't waste bandwidth re-downloading models you already have.
-- **Huggingface Token**: The `HF_TOKEN` is only necessary for downloading the `flux1-dev.safetensors` model when `LOW_VRAM=false`.
+- **Huggingface Token**: The `HF_TOKEN` is necessary for downloading the `flux1-dev.safetensors`, `flux1-schnell.safetensors`, and `ae.safetensors` models when `LOW_VRAM=false`.
