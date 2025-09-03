@@ -19,12 +19,12 @@ else
     cd /app/ComfyUI
     git fetch origin master
     git reset --hard origin/master
-    pip install -r requirements.txt
+    uv pip install -r requirements.txt
     echo "Updating ComfyUI-Manager..."
     cd /app/ComfyUI/custom_nodes/ComfyUI-Manager
     git fetch origin main
     git reset --hard origin/main
-    pip install -r requirements.txt
+    uv pip install -r requirements.txt
     cd /app
 fi
 

@@ -22,7 +22,7 @@ git clone --recurse-submodules \
 for req_file in "/app/ComfyUI/requirements.txt" "/app/ComfyUI/custom_nodes/ComfyUI-Manager/requirements.txt"; do
     if [ -f "$req_file" ]; then
         echo "[INFO] Installing requirements from $req_file"
-        pip install --no-cache-dir -r "$req_file" --retries 3 || echo "Warning: Some dependencies from $req_file may have failed to install"
+        uv pip install -r "$req_file" --retries 3 || echo "Warning: Some dependencies from $req_file may have failed to install"
     fi
 done
 
