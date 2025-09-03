@@ -17,7 +17,7 @@ RUN apt-get update \
 RUN pip install --no-cache-dir --break-system-packages --upgrade pip
 
 # Define build argument for CUDA version with default value
-ARG CUDA_VERSION=cu121
+ARG CUDA_VERSION=cu128
 
 # Install torch, torchvision, torchaudio and xformers
 RUN pip install --no-cache-dir --break-system-packages \
